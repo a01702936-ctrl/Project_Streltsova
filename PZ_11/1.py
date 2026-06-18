@@ -4,8 +4,15 @@
 # 2). минимальный среди отрицательных
 # 3). произведение элементов
 
-vhod = input("Введите числа: ")
-numbers = [int(x) for x in vhod.split()]
+
+import random
+from functools import reduce
+
+n = int(input("Введите количество чисел: "))
+
+numbers = []
+for _ in range(n):
+    numbers.append(random.randint(-50, 50))
 
 polozh = [x for x in numbers if x > 0]
 max_polozh = max(polozh) if polozh else None
@@ -13,10 +20,9 @@ max_polozh = max(polozh) if polozh else None
 otric = [x for x in numbers if x < 0]
 min_otric = min(otric) if otric else None
 
-from functools import reduce
 proizv = reduce(lambda a, b: a * b, numbers)
 
-print("Последовательность:", numbers)
+print("Сгенерированная последовательность:", numbers)
 print("Максимальный среди положительных:", max_polozh)
 print("Минимальный среди отрицательных:", min_otric)
 print("Произведение всех элементов:", proizv)
